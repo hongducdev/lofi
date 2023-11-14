@@ -1,8 +1,8 @@
 import { LibraryBig } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import { Switch } from "../ui/switch";
 import ToggleExpand from "./ToggleExpand";
+import SwitchDayNight from "./SwitchDayNight";
 
 const Header = () => {
   return (
@@ -13,7 +13,7 @@ const Header = () => {
       </Link>
 
       <div className="flex items-center gap-3">
-        <Switch />
+        <SwitchDayNight />
         <ToggleExpand />
       </div>
     </div>

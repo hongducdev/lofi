@@ -1,7 +1,6 @@
 "use client";
-import { useStore } from "@/stores";
 import { Maximize2, Minimize2 } from "lucide-react";
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Tooltip,
   TooltipContent,
@@ -22,7 +21,7 @@ const ToggleExpand = () => {
     } else {
       openFullscreen();
     }
-  }; 
+  };
 
   return (
     <>
