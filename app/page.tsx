@@ -74,7 +74,7 @@ export default function Home() {
         <div className="absolute top-1/2 left-[200px] cursor-pointer">
           <Rain />
         </div>
-        <div className="absolute bottom-10 left-1/4 cursor-pointer">
+        <div className="absolute bottom-[28%] left-[35%] cursor-pointer">
           <Traffic />
         </div>
       </div>
