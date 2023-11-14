@@ -12,7 +12,7 @@ type Actions = {
 
 const useSound = create<State & Actions>((set) => ({
   traffic: false,
-  trafficVolume: 0.5,
+  trafficVolume: 50,
   toggleTraffic: () =>
     set((state) => ({
       traffic: !state.traffic,
