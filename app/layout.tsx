@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Timer from "@/components/Timer";
+import Player from "@/components/Player";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
         <Header />
         <Timer />
         {children}
+        <Player />
       </body>
     </html>
   );
