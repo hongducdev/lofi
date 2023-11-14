@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Timer from "@/components/Timer";
 import Player from "@/components/Player";
+import Tomofocus from "@/components/Tomofocus";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
         <Timer />
         {children}
         <Player />
+        <Tomofocus />
       </body>
     </html>
   );

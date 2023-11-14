@@ -1,16 +1,16 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
+export const formatTime = (time: number) => {
+  if (time < 10) {
+    return `0${time}`;
+  }
+  return time;
+};
+
 const Timer = () => {
   const [time, setTime] = useState<string>("");
   const [day, setDay] = useState<string>("");
-
-  const formatTime = (time: number) => {
-    if (time < 10) {
-      return `0${time}`;
-    }
-    return time;
-  };
 
   const getTime = () => {
     const date = new Date();
