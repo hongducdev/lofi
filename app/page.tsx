@@ -1,10 +1,11 @@
 "use client";
-import Mixer from "@/components/Mixer";
 import Rain from "@/components/Rain";
 import Traffic from "@/components/Trafic";
 import useDayNight from "@/stores/dayNight";
 import useWindowStore from "@/stores/expandWindow";
 import useRain from "@/stores/rain";
+import useSound from "@/stores/sound";
+import ReactAudioPlayer from "react-audio-player";
 
 export default function Home() {
   const { isExpanded } = useWindowStore();
@@ -13,6 +14,12 @@ export default function Home() {
 
   const comboMode = `${isDay}-${isRain}`;
 
+  const {
+    peopleVolume,
+    summerStormVolume,
+    wavesVolume,
+    windVolume,
+  } = useSound();
   return (
     <div>
       <div className="">
@@ -78,9 +85,34 @@ export default function Home() {
         <div className="absolute bottom-[28%] left-[35%] cursor-pointer">
           <Traffic />
         </div>
-        <div className="absolute top-1/2 right-14 cursor-pointer">
-          <Mixer />
-        </div>
+        <ReactAudioPlayer
+          src="./assets/sounds/people_talk_inside.mp3"
+          autoPlay
+          loop
+          preload="auto"
+          volume={peopleVolume / 100}
+        />
+        <ReactAudioPlayer
+          src="./assets/sounds/wind.mp3"
+          autoPlay
+          loop
+          preload="auto"
+          volume={windVolume / 100}
+        />
+        <ReactAudioPlayer
+          src="./assets/sounds/waves.mp3"
+          autoPlay
+          loop
+          preload="auto"
+          volume={wavesVolume / 100}
+        />
+        <ReactAudioPlayer
+          src="./assets/sounds/summer_storm.mp3"
+          autoPlay
+          loop
+          preload="auto"
+          volume={summerStormVolume / 100}
+        />
       </div>
     </div>
   );

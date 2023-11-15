@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Timer from "@/components/Timer";
 import Player from "@/components/Player";
 import Tomofocus from "@/components/Tomofocus";
+import Mixer from "@/components/Mixer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
         {children}
         <Player />
         <Tomofocus />
+        <Mixer />
       </body>
     </html>
   );

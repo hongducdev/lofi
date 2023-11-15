@@ -9,7 +9,6 @@ import { Settings2, Volume1, Volume2 } from "lucide-react";
 import useMusic from "@/stores/playMusic";
 import { Slider } from "./ui/slider";
 import useSound from "@/stores/sound";
-import ReactAudioPlayer from "react-audio-player";
 
 const Mixer = () => {
   const { setVolumeMusic, volumeMusic } = useMusic();
@@ -25,15 +24,8 @@ const Mixer = () => {
     setWindVolume,
   } = useSound();
 
-  interface ILinkAudio {
-    title: string;
-    url: string;
-    volume: number;
-    setVolume?: ((volume: number) => void) | undefined;
-  }
-
   return (
-    <>
+    <div className="fixed top-1/2 right-14 cursor-pointer">
       <Popover>
         <PopoverTrigger>
           <div className="p-3 bg-white rounded-full hover:bg-[#F3B664] transition-colors ease-in-out duration-300">
@@ -70,7 +62,7 @@ const Mixer = () => {
                 <div className="w-[60%]">
                   <Slider
                     value={[peopleVolume || 0]}
-                    defaultValue={[50]}
+                    defaultValue={[0]}
                     max={100}
                     step={1}
                     onValueChange={(value) => {
@@ -86,7 +78,7 @@ const Mixer = () => {
                 <div className="w-[60%]">
                   <Slider
                     value={[windVolume || 0]}
-                    defaultValue={[50]}
+                    defaultValue={[0]}
                     max={100}
                     step={1}
                     onValueChange={(value) => {
@@ -102,7 +94,7 @@ const Mixer = () => {
                 <div className="w-[60%]">
                   <Slider
                     value={[wavesVolume || 0]}
-                    defaultValue={[50]}
+                    defaultValue={[0]}
                     max={100}
                     step={1}
                     onValueChange={(value) => {
@@ -118,7 +110,7 @@ const Mixer = () => {
                 <div className="w-[60%]">
                   <Slider
                     value={[summerStormVolume || 0]}
-                    defaultValue={[50]}
+                    defaultValue={[0]}
                     max={100}
                     step={1}
                     onValueChange={(value) => {
@@ -133,27 +125,8 @@ const Mixer = () => {
           </div>
         </PopoverContent>
       </Popover>
-      <ReactAudioPlayer
-        src="./assets/sounds/people_talk_inside.mp3"
-        autoPlay
-        volume={peopleVolume / 100}
-      />
-      <ReactAudioPlayer
-        src="./assets/sounds/wind.mp3"
-        autoPlay
-        volume={windVolume / 100}
-      />
-      <ReactAudioPlayer
-        src="./assets/sounds/waves.mp3"
-        autoPlay
-        volume={wavesVolume / 100}
-      />
-      <ReactAudioPlayer
-        src="./assets/sounds/summer_storm.mp3"
-        autoPlay
-        volume={summerStormVolume / 100}
-      />
-    </>
+      
+    </div>
   );
 };
 
