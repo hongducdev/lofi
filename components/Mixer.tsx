@@ -25,7 +25,7 @@ const Mixer = () => {
   } = useSound();
 
   return (
-    <div className="fixed top-1/2 right-14 cursor-pointer">
+    <div className="cursor-pointer">
       <Popover>
         <PopoverTrigger>
           <div className="p-3 bg-white rounded-full hover:bg-[#F3B664] transition-colors ease-in-out duration-300">
