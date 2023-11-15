@@ -54,7 +54,6 @@ function Timer() {
     return ((totalSeconds - remainingSeconds) / totalSeconds) * 100;
   };
 
-  console.log(calculateProgress());
 
   return (
     <div className="fixed bottom-10 right-14 glass-effect p-3 rounded-2xl min-w-[300px] flex items-center gap-3">
