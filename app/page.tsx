@@ -1,4 +1,5 @@
 "use client";
+import Mixer from "@/components/Mixer";
 import Rain from "@/components/Rain";
 import Traffic from "@/components/Trafic";
 import useDayNight from "@/stores/dayNight";
@@ -76,6 +77,9 @@ export default function Home() {
         </div>
         <div className="absolute bottom-[28%] left-[35%] cursor-pointer">
           <Traffic />
+        </div>
+        <div className="absolute top-1/2 right-14 cursor-pointer">
+          <Mixer />
         </div>
       </div>
     </div>
