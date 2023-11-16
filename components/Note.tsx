@@ -18,10 +18,12 @@ interface NoteItem {
 
 const Note: React.FC = () => {
   const [input, setInput] = useState<string>("");
-  const [data, setData] = useState<NoteItem[]>(
-    JSON.parse(localStorage.getItem("data") || "[]")
-  );
+  const [data, setData] = useState<NoteItem[]>([]);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    setData(JSON.parse(localStorage.getItem("data") || "[]"));
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("data", JSON.stringify(data));
