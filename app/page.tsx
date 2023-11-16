@@ -14,12 +14,8 @@ export default function Home() {
 
   const comboMode = `${isDay}-${isRain}`;
 
-  const {
-    peopleVolume,
-    summerStormVolume,
-    wavesVolume,
-    windVolume,
-  } = useSound();
+  const { peopleVolume, summerStormVolume, wavesVolume, windVolume } =
+    useSound();
   return (
     <div>
       <div className="">
@@ -85,34 +81,6 @@ export default function Home() {
         <div className="absolute bottom-[28%] left-[35%] cursor-pointer">
           <Traffic />
         </div>
-        <ReactAudioPlayer
-          src="./assets/sounds/people_talk_inside.mp3"
-          autoPlay
-          loop
-          preload="auto"
-          volume={peopleVolume / 100}
-        />
-        <ReactAudioPlayer
-          src="./assets/sounds/wind.mp3"
-          autoPlay
-          loop
-          preload="auto"
-          volume={windVolume / 100}
-        />
-        <ReactAudioPlayer
-          src="./assets/sounds/waves.mp3"
-          autoPlay
-          loop
-          preload="auto"
-          volume={wavesVolume / 100}
-        />
-        <ReactAudioPlayer
-          src="./assets/sounds/summer_storm.mp3"
-          autoPlay
-          loop
-          preload="auto"
-          volume={summerStormVolume / 100}
-        />
       </div>
     </div>
   );

@@ -7,6 +7,10 @@ type State = {
   summerStormVolume: number;
   wavesVolume: number;
   windVolume: number;
+  isPeople: boolean;
+  isSummerStorm: boolean;
+  isWaves: boolean;
+  isWind: boolean;
 };
 
 type Actions = {
@@ -16,6 +20,10 @@ type Actions = {
   setSummerStormVolume: (volume: number) => void;
   setWavesVolume: (volume: number) => void;
   setWindVolume: (volume: number) => void;
+  setIsPeople: (isPeople: boolean) => void;
+  setIsSummerStorm: (isSummerStorm: boolean) => void;
+  setIsWaves: (isWaves: boolean) => void;
+  setIsWind: (isWind: boolean) => void;
 };
 
 const useSound = create<State & Actions>((set) => ({
@@ -25,6 +33,10 @@ const useSound = create<State & Actions>((set) => ({
   summerStormVolume: 0,
   wavesVolume: 0,
   windVolume: 0,
+  isPeople: false,
+  isSummerStorm: false,
+  isWaves: false,
+  isWind: false,
   toggleTraffic: () =>
     set((state) => ({
       traffic: !state.traffic,
@@ -48,6 +60,22 @@ const useSound = create<State & Actions>((set) => ({
   setWindVolume: (windVolume) =>
     set(() => ({
       windVolume,
+    })),
+  setIsPeople: (isPeople) =>
+    set(() => ({
+      isPeople,
+    })),
+  setIsSummerStorm: (isSummerStorm) =>
+    set(() => ({
+      isSummerStorm,
+    })),
+  setIsWaves: (isWaves) =>
+    set(() => ({
+      isWaves,
+    })),
+  setIsWind: (isWind) =>
+    set(() => ({
+      isWind,
     })),
 }));
 

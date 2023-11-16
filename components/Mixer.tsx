@@ -9,6 +9,7 @@ import { Settings2, Volume1, Volume2 } from "lucide-react";
 import useMusic from "@/stores/playMusic";
 import { Slider } from "./ui/slider";
 import useSound from "@/stores/sound";
+import ReactAudioPlayer from "react-audio-player";
 
 const Mixer = () => {
   const { setVolumeMusic, volumeMusic } = useMusic();
@@ -18,10 +19,18 @@ const Mixer = () => {
     summerStormVolume,
     wavesVolume,
     windVolume,
+    isPeople,
+    isSummerStorm,
+    isWaves,
+    isWind,
     setPeopleVolume,
     setSummerStormVolume,
     setWavesVolume,
     setWindVolume,
+    setIsPeople,
+    setIsSummerStorm,
+    setIsWaves,
+    setIsWind,
   } = useSound();
 
   return (
@@ -66,9 +75,8 @@ const Mixer = () => {
                     max={100}
                     step={1}
                     onValueChange={(value) => {
-                      if (setPeopleVolume) {
-                        setPeopleVolume(value[0]);
-                      }
+                      setPeopleVolume(value[0]);
+                      setIsPeople(value[0] > 0);
                     }}
                   />
                 </div>
@@ -82,9 +90,8 @@ const Mixer = () => {
                     max={100}
                     step={1}
                     onValueChange={(value) => {
-                      if (setWindVolume) {
-                        setWindVolume(value[0]);
-                      }
+                      setWindVolume(value[0]);
+                      setIsWind(value[0] > 0);
                     }}
                   />
                 </div>
@@ -98,9 +105,8 @@ const Mixer = () => {
                     max={100}
                     step={1}
                     onValueChange={(value) => {
-                      if (setWavesVolume) {
-                        setWavesVolume(value[0]);
-                      }
+                      setWavesVolume(value[0]);
+                      setIsWaves(value[0] > 0);
                     }}
                   />
                 </div>
@@ -114,9 +120,8 @@ const Mixer = () => {
                     max={100}
                     step={1}
                     onValueChange={(value) => {
-                      if (setSummerStormVolume) {
-                        setSummerStormVolume(value[0]);
-                      }
+                      setSummerStormVolume(value[0]);
+                      setIsSummerStorm(value[0] > 0);
                     }}
                   />
                 </div>
@@ -125,7 +130,42 @@ const Mixer = () => {
           </div>
         </PopoverContent>
       </Popover>
-      
+      {isPeople && (
+        <ReactAudioPlayer
+          src="./assets/sounds/people_talk_inside.mp3"
+          loop
+          volume={peopleVolume / 100}
+          autoPlay
+          preload="auto"
+        />
+      )}
+      {isWind && (
+        <ReactAudioPlayer
+          src="./assets/sounds/wind.mp3"
+          loop
+          volume={windVolume / 100}
+          autoPlay
+          preload="auto"
+        />
+      )}
+      {isWaves && (
+        <ReactAudioPlayer
+          src="./assets/sounds/waves.mp3"
+          loop
+          volume={wavesVolume / 100}
+          autoPlay
+          preload="auto"
+        />
+      )}
+      {isSummerStorm && (
+        <ReactAudioPlayer
+          src="./assets/sounds/summer_storm.mp3"
+          loop
+          volume={summerStormVolume / 100}
+          autoPlay
+          preload="auto"
+        />
+      )}
     </div>
   );
 };
