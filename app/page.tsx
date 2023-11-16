@@ -1,87 +1,19 @@
-"use client";
-import Rain from "@/components/Rain";
-import Traffic from "@/components/Trafic";
-import useDayNight from "@/stores/dayNight";
-import useWindowStore from "@/stores/expandWindow";
-import useRain from "@/stores/rain";
-import useSound from "@/stores/sound";
-import ReactAudioPlayer from "react-audio-player";
+import Home from "@/components/Home";
+import { Metadata } from "next";
+import React from "react";
 
-export default function Home() {
-  const { isExpanded } = useWindowStore();
-  const { isDay } = useDayNight();
-  const { isRain } = useRain();
+export const metadata: Metadata = {
+  title: "Chill with me",
+  description:
+    "Discover a world of serene sounds on our website! Immerse yourself in soothing lofi music, explore a variety of ambient sounds, enhance focus with tomo focus, and stay organized with our todo list feature. Experience a creative and productive space, all while enjoying the convenience of seamlessly opening your favorite YouTube videos. Dive in now for a unique blend of relaxation and productivity!",
+};
 
-  const comboMode = `${isDay}-${isRain}`;
-
-  const { peopleVolume, summerStormVolume, wavesVolume, windVolume } =
-    useSound();
+const HomePage = () => {
   return (
     <div>
-      <div className="">
-        <video
-          className={`w-[100vw] z-[-1] absolute ${
-            isExpanded ? "top-[0%]" : "top-[-11%]"
-          } object-cover transition-opacity ease-in duration-300 ${
-            comboMode === "true-false" ? "opacity-100" : "opacity-0"
-          }`}
-          loop
-          autoPlay
-          muted
-        >
-          <source src="./assets/videos/ExteriorDay.mp4" type="video/mp4" />
-        </video>
-        {/* Rain Day */}
-        <video
-          className={`w-[100vw] z-[-1] absolute ${
-            isExpanded ? "top-[0%]" : "top-[-11%]"
-          } object-cover transition-opacity ease-in duration-300 ${
-            comboMode === "true-true" ? "opacity-100" : "opacity-0"
-          }`}
-          loop
-          autoPlay
-          muted
-        >
-          <source src="./assets/videos/ExteriorRainyDay.mp4" type="video/mp4" />
-        </video>
-        {/* Night */}
-        <video
-          className={`w-[100vw] z-[-1] absolute ${
-            isExpanded ? "top-[0%]" : "top-[-11%]"
-          } object-cover transition-opacity ease-in duration-300 ${
-            comboMode === "false-false" ? "opacity-100" : "opacity-0"
-          }`}
-          autoPlay
-          loop
-          muted
-        >
-          <source src="./assets/videos/ExteriorNight.mp4" type="video/mp4" />
-        </video>
-        {/* Rain Night */}
-        <video
-          className={`w-[100vw] z-[-1] absolute ${
-            isExpanded ? "top-[0%]" : "top-[-11%]"
-          } object-cover transition-opacity ease-in duration-300 ${
-            comboMode === "false-true" ? "opacity-100" : "opacity-0"
-          }`}
-          loop
-          autoPlay
-          muted
-        >
-          <source
-            src="./assets/videos/ExteriorRainyNight.mp4"
-            type="video/mp4"
-          />
-        </video>
-      </div>
-      <div className="">
-        <div className="absolute top-1/2 left-[200px] cursor-pointer">
-          <Rain />
-        </div>
-        <div className="absolute bottom-[28%] left-[35%] cursor-pointer">
-          <Traffic />
-        </div>
-      </div>
+      <Home />
     </div>
   );
-}
+};
+
+export default HomePage;
