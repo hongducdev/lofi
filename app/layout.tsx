@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     url: "https://chillwithme.hongduccodedao.io.vn/",
     images: [
       {
-        url: "https://chillwithme.vercel.app/thumbnail.png",
+        url: "https://chillwithme.hongduccodedao.io.vn/thumbnail.png",
         width: 1920,
         height: 1080,
         alt: "Chill with me",
