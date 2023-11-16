@@ -7,6 +7,7 @@ import Player from "@/components/Player";
 import Tomofocus from "@/components/Tomofocus";
 import Mixer from "@/components/Mixer";
 import Note from "@/components/Note";
+import YoutubeVideo from "@/components/YoutubeVideo";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
         <Header />
         <Timer />
         {children}
+        <YoutubeVideo />
         <Player />
         <Tomofocus />
         <div className="fixed top-1/2 -translate-y-1/2 right-14">
