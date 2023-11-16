@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+body,
+html,
+:root {
+  position: relative;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

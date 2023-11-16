@@ -15,9 +15,9 @@ const Home = () => {
     <div>
       <div className="">
         <video
-          className={`w-[100vw] z-[-1] absolute ${
+          className={`w-screen h-screen z-[-1] absolute ${
             isExpanded ? "top-[0%]" : "top-[-11%]"
-          } object-cover transition-opacity ease-in duration-300 ${
+          } object-cover bg-cover bg-center transition-opacity ease-in duration-300 ${
             comboMode === "true-false" ? "opacity-100" : "opacity-0"
           }`}
           loop
@@ -28,9 +28,9 @@ const Home = () => {
         </video>
         {/* Rain Day */}
         <video
-          className={`w-[100vw] z-[-1] absolute ${
+          className={`w-screen h-screen z-[-1] absolute ${
             isExpanded ? "top-[0%]" : "top-[-11%]"
-          } object-cover transition-opacity ease-in duration-300 ${
+          } object-cover bg-center bg-cover transition-opacity ease-in duration-300 ${
             comboMode === "true-true" ? "opacity-100" : "opacity-0"
           }`}
           loop
@@ -41,9 +41,9 @@ const Home = () => {
         </video>
         {/* Night */}
         <video
-          className={`w-[100vw] z-[-1] absolute ${
+          className={`w-screen h-screen z-[-1] absolute ${
             isExpanded ? "top-[0%]" : "top-[-11%]"
-          } object-cover transition-opacity ease-in duration-300 ${
+          } object-cover bg-center bg-cover transition-opacity ease-in duration-300 ${
             comboMode === "false-false" ? "opacity-100" : "opacity-0"
           }`}
           autoPlay
@@ -54,9 +54,9 @@ const Home = () => {
         </video>
         {/* Rain Night */}
         <video
-          className={`w-[100vw] z-[-1] absolute ${
+          className={`w-screen h-screen z-[-1] absolute ${
             isExpanded ? "top-[0%]" : "top-[-11%]"
-          } object-cover transition-opacity ease-in duration-300 ${
+          } object-cover bg-center bg-cover transition-opacity ease-in duration-300 ${
             comboMode === "false-true" ? "opacity-100" : "opacity-0"
           }`}
           loop
