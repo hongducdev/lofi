@@ -12,7 +12,7 @@ const Home = () => {
 
   const comboMode = `${isDay}-${isRain}`;
   return (
-    <div>
+    <div className="h-full">
       <div className="">
         <video
           className={`w-screen h-screen z-[-1] absolute ${
@@ -69,7 +69,7 @@ const Home = () => {
           />
         </video>
       </div>
-      <div className="">
+      <div className="absolute h-screen w-screen">
         <div className="absolute top-1/2 left-[200px] cursor-pointer">
           <Rain />
         </div>

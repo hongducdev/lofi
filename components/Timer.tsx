@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import useDayNight from "@/stores/dayNight";
+import React, { use, useEffect, useState } from "react";
 
 export const formatTime = (time: number) => {
   if (time < 10) {
@@ -11,6 +12,7 @@ export const formatTime = (time: number) => {
 const Timer = () => {
   const [time, setTime] = useState<string>("");
   const [day, setDay] = useState<string>("");
+  const { setIsDay } = useDayNight();
 
   const getTime = () => {
     const date = new Date();
@@ -40,6 +42,16 @@ const Timer = () => {
     const intervalId = setInterval(getTime, 1000);
     return () => clearInterval(intervalId);
   }, []);
+
+  useEffect(() => {
+    const date = new Date();
+    const hours = date.getHours();
+    if (hours >= 6 && hours <= 18) {
+      setIsDay(true);
+    } else {
+      setIsDay(false);
+    }
+  }, [setIsDay]);
 
   return (
     <div className="fixed top-5 right-14 glass-effect p-3 rounded-2xl min-w-[300px] flex items-center gap-10 justify-center">

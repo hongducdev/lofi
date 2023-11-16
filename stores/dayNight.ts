@@ -6,6 +6,7 @@ type State = {
 
 type Actions = {
   toggleDay: () => void;
+  setIsDay: (isDay: boolean) => void;
 };
 
 const useDayNight = create<State & Actions>((set) => ({
@@ -13,6 +14,10 @@ const useDayNight = create<State & Actions>((set) => ({
   toggleDay: () =>
     set((state) => ({
       isDay: !state.isDay,
+    })),
+  setIsDay: (isDay) =>
+    set(() => ({
+      isDay,
     })),
 }));
 
