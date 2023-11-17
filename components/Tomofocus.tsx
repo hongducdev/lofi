@@ -1,19 +1,31 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { Pause, Play } from "lucide-react";
+import React, { useState, useEffect, use, useCallback } from "react";
+import { Pause, Play, RotateCcw } from "lucide-react";
 import { formatTime } from "./Timer";
 import { Progress } from "./ui/progress";
+import { useTimeInitial } from "@/stores/timeInitial";
 
 function Timer() {
+  const { initialHours, initialMinutes, initialSeconds } = useTimeInitial();
+
   const [time, setTime] = useState({
-    hours: 0,
-    minutes: 25,
-    seconds: 0,
+    hours: initialHours,
+    minutes: initialMinutes,
+    seconds: initialSeconds,
   });
+
+  useEffect(() => {
+    setTime({
+      hours: initialHours,
+      minutes: initialMinutes,
+      seconds: initialSeconds,
+    });
+  }, [initialHours, initialMinutes, initialSeconds]);
 
   const [isRunning, setIsRunning] = useState(false);
 
-  const totalSeconds = 25 * 60;
+  const totalSeconds =
+    initialHours * 3600 + initialMinutes * 60 + initialSeconds;
 
   useEffect(() => {
     if (isRunning) {
@@ -44,7 +56,11 @@ function Timer() {
   const pause = () => setIsRunning(false);
 
   const restart = () => {
-    setTime({ hours: 0, minutes: 25, seconds: 0 });
+    setTime({
+      hours: initialHours,
+      minutes: initialMinutes,
+      seconds: initialSeconds,
+    });
     setIsRunning(false);
   };
 
@@ -54,6 +70,23 @@ function Timer() {
     return ((totalSeconds - remainingSeconds) / totalSeconds) * 100;
   };
 
+  const handleBeforeUnload = useCallback(
+    (event: BeforeUnloadEvent) => {
+      const message = "Your actions are not saved. Confirm reload?";
+      event.returnValue = message; // Standard for most browsers
+      return message; // For some older browsers
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
+
+  useEffect(() => {
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [handleBeforeUnload]);
 
   return (
     <div className="fixed bottom-10 right-14 glass-effect p-3 rounded-2xl min-w-[300px] flex items-center gap-3">
@@ -67,7 +100,6 @@ function Timer() {
           className="flex items-center gap-2 bg-white px-3 py-1 rounded-md"
         >
           <Pause size={18} />
-          <span>Pause</span>
         </button>
       ) : (
         <button
@@ -75,13 +107,16 @@ function Timer() {
           className="flex items-center gap-2 bg-white px-3 py-1 rounded-md"
         >
           <Play size={18} />
-          <span>Start</span>
         </button>
       )}
+      <button
+        onClick={restart}
+        className="flex items-center gap-2 bg-white px-3 py-1 rounded-md"
+      >
+        <RotateCcw size={18} />
+      </button>
       <div className="min-w-[200px]">
-        <Progress
-          value={calculateProgress()}
-        />
+        <Progress value={calculateProgress()} />
       </div>
     </div>
   );
