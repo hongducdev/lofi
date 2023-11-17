@@ -79,7 +79,13 @@ const Note: React.FC = () => {
           </div>
         </PopoverTrigger>
         <PopoverContent>
-          <div className="flex items-center gap-2">
+          <form
+            className="flex items-center gap-2"
+            onSubmit={(e) => {
+              e.preventDefault();
+              addData();
+            }}
+          >
             <Input
               placeholder="Note"
               className="h-10"
@@ -96,11 +102,11 @@ const Note: React.FC = () => {
                 </Button>
               </>
             ) : (
-              <Button onClick={addData}>
+              <Button onClick={addData} type="submit">
                 <Plus size={20} />
               </Button>
             )}
-          </div>
+          </form>
           <ScrollArea className="h-40 mt-2 flex flex-col gap-2">
             {data.length === 0 && (
               <span>
