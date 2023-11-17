@@ -42,6 +42,11 @@ const Setting = () => {
     setInputHours(inputHours);
     setInputMinutes(inputMinutes);
     setInputSeconds(inputSeconds);
+
+    toast({
+      title: "Saved",
+      description: "Your time has been saved",
+    });
   };
 
   return (
