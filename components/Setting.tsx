@@ -35,6 +35,7 @@ const Setting = () => {
         variant: "destructive",
       });
     }
+    
     setInitialHours(inputHours);
     setInitialMinutes(inputMinutes);
     setInitialSeconds(inputSeconds);
