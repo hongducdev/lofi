@@ -10,22 +10,30 @@ const Home = () => {
   const { isExpanded } = useWindowStore();
   const { isDay } = useDayNight();
   const { isRain } = useRain();
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
 
   useEffect(() => {
     // Hàm xử lý sự kiện thay đổi kích thước màn hình
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
+      if (typeof window !== "undefined") {
+        setWindowWidth(window.innerWidth);
+      }
     };
 
     // Đăng ký sự kiện thay đổi kích thước màn hình
-    window.addEventListener("resize", handleResize);
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", handleResize);
+    }
 
     // Hủy đăng ký sự kiện khi component unmount
     return () => {
-      window.removeEventListener("resize", handleResize);
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", handleResize);
+      }
     };
-  }, []); // Thêm [] để đảm bảo chỉ đăng ký sự kiện một lần khi component mount
+  }, []);
 
   if (windowWidth < 700) {
     return <div className="h-screen w-screen flex items-center justify-center bg-slate-950 text-white">Thông báo: Kích thước màn hình quá bé!</div>;
