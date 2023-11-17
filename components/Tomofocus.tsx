@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, use, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Pause, Play, RotateCcw } from "lucide-react";
 import { formatTime } from "./Timer";
 import { Progress } from "./ui/progress";
@@ -43,15 +43,26 @@ function Timer() {
 
           // Timer reached zero, reset to the initial time
           restart();
+          playAudio(); // Phát âm thanh khi hết thời gian
+          showNotification("Time's up!"); // Hiển thị thông báo khi hết giờ
           return { ...prev }; // Return the current state to prevent a re-render
         });
       }, 1000);
 
-      return () => clearInterval(id);
+      return () => {
+        clearInterval(id);
+      };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isRunning, time]);
 
-  const start = () => setIsRunning(true);
+  const start = () => {
+    Notification.requestPermission().then((permission) => {
+      if (permission === "granted") {
+        setIsRunning(true);
+      }
+    });
+  };
 
   const pause = () => setIsRunning(false);
 
@@ -68,6 +79,23 @@ function Timer() {
     const remainingSeconds =
       time.hours * 3600 + time.minutes * 60 + time.seconds;
     return ((totalSeconds - remainingSeconds) / totalSeconds) * 100;
+  };
+
+  const playAudio = () => {
+    const audio = new Audio("./assets/sounds/ding.mp3"); // Đặt đúng đường dẫn tới file âm thanh của bạn
+    audio.play();
+  };
+
+  const showNotification = (message: string) => {
+    if (Notification.permission === "granted") {
+      new Notification("Timer Notification", { body: message });
+    } else if (Notification.permission !== "denied") {
+      Notification.requestPermission().then((permission) => {
+        if (permission === "granted") {
+          new Notification("Timer Notification", { body: message });
+        }
+      });
+    }
   };
 
   const handleBeforeUnload = useCallback(
