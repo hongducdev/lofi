@@ -1,13 +1,17 @@
 {
-  "theme_color": "#a6e3a1",
-  "background_color": "#1e1e2e",
-  "display": "fullscreen",
-  "scope": "/",
-  "start_url": "/",
   "name": "Chill With Me",
   "short_name": "Chill With Me",
   "description": "Discover a world of serene sounds on our website! Immerse yourself in soothing lofi music, explore a variety of ambient sounds, enhance focus with tomo focus, and stay organized with our todo list feature. Experience a creative and productive space, all while enjoying the convenience of seamlessly opening your favorite YouTube videos. Dive in now for a unique blend of relaxation and productivity!",
-  "icons": {
-    "name": "image.png"
-  }
+  "theme_color": "#1e1e2e",
+  "background_color": "#a6e3a1",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://chillwithme.hongduccodedao.io.vn/manifest.json"
+    }
+  ],
+  "scope": "/"
 }
