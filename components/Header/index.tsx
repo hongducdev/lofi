@@ -6,10 +6,10 @@ import SwitchDayNight from "./SwitchDayNight";
 
 const Header = () => {
   return (
-    <div className="fixed top-5 left-14 min-w-[500px] glass-effect p-3 z-50 rounded-2xl flex items-center justify-between gap-10">
+    <div className="fixed top-5 left-5 md:min-w-[500px] glass-effect p-2 md:p-3 z-50 rounded-2xl flex items-center justify-between gap-10">
       <Link href="/" className="cursor-pointer flex items-center gap-2">
         <LibraryBig size={45} color="white" />
-        <span className="text-white text-3xl font-bold">Chill With Me</span>
+        <span className="text-white text-xl md:text-3xl font-bold">Chill With Me</span>
       </Link>
 
       <div className="flex items-center gap-5">

@@ -41,16 +41,18 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <main>
-          <Header />
-          <Timer />
           {children}
-          <YoutubeVideo />
-          <Player />
-          <Tomofocus />
-          <div className="fixed top-1/2 -translate-y-1/2 right-14">
-            <Mixer />
-            <Note />
-            <Setting />
+          <div className="hidden sm:block">
+            <Header />
+            <Timer />
+            <YoutubeVideo />
+            <Player />
+            <Tomofocus />
+            <div className="fixed top-1/2 -translate-y-1/2 right-5">
+              <Mixer />
+              <Note />
+              <Setting />
+          </div>
           </div>
         </main>
         <Toaster />

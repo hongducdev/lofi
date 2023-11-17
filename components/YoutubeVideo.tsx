@@ -10,7 +10,7 @@ const YoutubeVideo = () => {
   const [videoLink, setVideoLink] = React.useState("");
 
   return (
-    <div className="fixed bottom-10 left-14">
+    <div className="fixed bottom-10 left-5">
       {
         videoLink && (
           <ReactPlayer

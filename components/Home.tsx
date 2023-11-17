@@ -4,11 +4,32 @@ import Traffic from "@/components/Trafic";
 import useDayNight from "@/stores/dayNight";
 import useWindowStore from "@/stores/expandWindow";
 import useRain from "@/stores/rain";
+import { useEffect, useState } from "react";
 
 const Home = () => {
   const { isExpanded } = useWindowStore();
   const { isDay } = useDayNight();
   const { isRain } = useRain();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    // Hàm xử lý sự kiện thay đổi kích thước màn hình
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Đăng ký sự kiện thay đổi kích thước màn hình
+    window.addEventListener("resize", handleResize);
+
+    // Hủy đăng ký sự kiện khi component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []); // Thêm [] để đảm bảo chỉ đăng ký sự kiện một lần khi component mount
+
+  if (windowWidth < 700) {
+    return <div className="h-screen w-screen flex items-center justify-center bg-slate-950 text-white">Thông báo: Kích thước màn hình quá bé!</div>;
+  }
 
   const comboMode = `${isDay}-${isRain}`;
   return (

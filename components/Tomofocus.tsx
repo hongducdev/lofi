@@ -117,7 +117,7 @@ function Timer() {
   }, [handleBeforeUnload]);
 
   return (
-    <div className="fixed bottom-10 right-14 glass-effect p-3 rounded-2xl min-w-[300px] flex items-center gap-3">
+    <div className="fixed bottom-10 right-5 glass-effect p-3 rounded-2xl min-w-[300px] flex items-center gap-3">
       <span className="text-white text-xl">
         {formatTime(time.hours)}:{formatTime(time.minutes)}:
         {formatTime(time.seconds)}

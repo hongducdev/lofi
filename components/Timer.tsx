@@ -54,9 +54,9 @@ const Timer = () => {
   }, [setIsDay]);
 
   return (
-    <div className="fixed top-5 right-14 glass-effect p-3 rounded-2xl min-w-[300px] flex items-center gap-10 justify-center">
-      <span className="text-2xl text-white font-semibold">{time}</span>
-      <span className="text-2xl text-white font-semibold">{day}</span>
+    <div className="fixed top-5 right-5 glass-effect p-3 rounded-2xl min-w-[300px] flex items-center gap-10 justify-center">
+      <span className="md:text-2xl text-white font-semibold">{time}</span>
+      <span className="md:text-2xl text-white font-semibold">{day}</span>
     </div>
   );
 };
