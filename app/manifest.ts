@@ -18,7 +18,6 @@ export default function manifest(): MetadataRoute.Manifest {
     start_url: "/",
     display: "standalone",
     orientation: "portrait",
-    prefer_related_applications: true,
     related_applications: [
       {
         platform: "webapp",
