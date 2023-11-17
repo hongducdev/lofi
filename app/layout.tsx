@@ -8,6 +8,8 @@ import Tomofocus from "@/components/Tomofocus";
 import Mixer from "@/components/Mixer";
 import Note from "@/components/Note";
 import YoutubeVideo from "@/components/YoutubeVideo";
+import Setting from "@/components/Setting";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,16 +40,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        <Timer />
-        {children}
-        <YoutubeVideo />
-        <Player />
-        <Tomofocus />
-        <div className="fixed top-1/2 -translate-y-1/2 right-14">
-          <Mixer />
-          <Note />
-        </div>
+        <main>
+          <Header />
+          <Timer />
+          {children}
+          <YoutubeVideo />
+          <Player />
+          <Tomofocus />
+          <div className="fixed top-1/2 -translate-y-1/2 right-14">
+            <Mixer />
+            <Note />
+            <Setting />
+          </div>
+        </main>
+        <Toaster />
       </body>
     </html>
   );
