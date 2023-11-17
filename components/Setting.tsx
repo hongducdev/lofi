@@ -54,8 +54,9 @@ const Setting = () => {
         </PopoverTrigger>
         <PopoverContent>
           <div className="">
-            <h3>TomoFocus Setting</h3>
+            <h3 className="font-semibold">TomoFocus Setting</h3>
             <div className="flex flex-col gap-2 mt-2">
+              <label className="text-sm">Hours</label>
               <Input
                 placeholder="Hours"
                 type="number"
@@ -63,6 +64,7 @@ const Setting = () => {
                 value={inputHours}
                 onChange={(e) => setInputHours(Number(e.target.value))}
               />
+              <label className="text-sm">Minutes</label>
               <Input
                 placeholder="Minutes"
                 type="number"
@@ -70,6 +72,7 @@ const Setting = () => {
                 value={inputMinutes}
                 onChange={(e) => setInputMinutes(Number(e.target.value))}
               />
+              <label className="text-sm">Seconds</label>
               <Input
                 placeholder="Seconds"
                 type="number"
