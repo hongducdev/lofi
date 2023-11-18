@@ -35,7 +35,7 @@ const Setting = () => {
         variant: "destructive",
       });
     }
-    
+
     setInitialHours(inputHours);
     setInitialMinutes(inputMinutes);
     setInitialSeconds(inputSeconds);
@@ -44,10 +44,12 @@ const Setting = () => {
     setInputMinutes(inputMinutes);
     setInputSeconds(inputSeconds);
 
-    toast({
-      title: "Saved",
-      description: "Your time has been saved",
-    });
+    setTimeout(() => {
+      toast({
+        title: "Saved",
+        description: "Your time has been saved",
+      });
+    }, 2000);
   };
 
   return (
@@ -61,7 +63,13 @@ const Setting = () => {
         <PopoverContent>
           <div className="">
             <h3 className="font-semibold">TomoFocus Setting</h3>
-            <div className="flex flex-col gap-2 mt-2">
+            <form
+              className="flex flex-col gap-2 mt-2"
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSave();
+              }}
+            >
               <label className="text-sm">Hours</label>
               <Input
                 placeholder="Hours"
@@ -87,9 +95,11 @@ const Setting = () => {
                 onChange={(e) => setInputSeconds(Number(e.target.value))}
               />
               <div className="flex items-end justify-end">
-                <Button onClick={handleSave}>Save</Button>
+                <Button onClick={handleSave} type="submit">
+                  Save
+                </Button>
               </div>
-            </div>
+            </form>
           </div>
         </PopoverContent>
       </Popover>
